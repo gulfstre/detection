@@ -52,10 +52,10 @@ class DetectorDatasetHelper:
         # Определяем размер уже скачанной части файла, если файл существует
         if os.path.exists(file_path):
             downloaded_bytes = os.path.getsize(file_path)
-            print(f'Начинаем загрузку файла: {filename}')
+            print(f'Продолжаем загрузку файла: {filename}')
         else:
             downloaded_bytes = 0
-            print(f'Продолжаем загрузку файла: {filename}')
+            print(f'Начинаем загрузку файла: {filename}')
 
         # Сначала получаем размер файла на сервере
         response = requests.head(url)
