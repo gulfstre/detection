@@ -3,7 +3,7 @@ from detectors import DetectorYolo8
 
 
 
-ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg']
+ALLOWED_IMAGE_EXTENSIONS = ('.jpg', '.jpeg')
 INPUT_DIR = '/usr/src/exchange/input/'
 OUTPUT_DIR = '/usr/src/exchange/output/'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -19,12 +19,11 @@ for filename in os.listdir(INPUT_DIR):
         output_path = os.path.join(OUTPUT_DIR, os.path.splitext(filename)[0] + '.txt')
 
         # Выполнение предсказания с помощью детектора
-        prediction = detector.predict(f'{INPUT_DIR}{filename}')
-        # Получение ограничивающих рамок
-        boxes = prediction.boxes
-
+        predictions = detector.predict(f'{INPUT_DIR}{filename}')
+        
         # Сохранение ограничивающих рамок в текстовый файл
         with open(output_path, 'w') as f:
-            for box in boxes:
-                f.write(f"{box}\n")
+            for prediction in predictions:
+                for box in prediction.boxes:
+                    f.write(f"{box}\n")
                 
