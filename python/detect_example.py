@@ -1,19 +1,29 @@
+import os
 from detectors import DetectorYolo8
 
 
 
 ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg']
-IMAGE_DIR = '/usr/src/input_images/'
+INPUT_DIR = '/usr/src/exchange/input_images/'
+OUTPUT_DIR = '/usr/src/exchange/input_images/'
 
 detector = DetectorYolo8()
 
-results = []
-for filename in os.listdir(IMAGE_DIR):
-    if filename.endswith(ALLOWED_IMAGE_EXTENSIONS):
-        results.append(
-            detector
-                .predict(f'{IMAGE_DIR}{filename}')
-                .boxes
-        )
+# Перебор всех файлов во входной директории
+for filename in os.listdir(INPUT_DIR):
+    if filename.lower().endswith(ALLOWED_IMAGE_EXTENSIONS):
+        
+        # Формирование путей к файлам
+        input_path = os.path.join(INPUT_DIR, filename)
+        output_path = os.path.join(OUTPUT_DIR, os.path.splitext(filename)[0] + '.txt')
 
-return results
+        # Выполнение предсказания с помощью детектора
+        prediction = detector.predict(f'{INPUT_DIR}{filename}')
+        # Получение ограничивающих рамок
+        boxes = prediction.boxes
+
+        # Сохранение ограничивающих рамок в текстовый файл
+        with open(output_path, 'w') as f:
+            for box in boxes:
+                f.write(f"{box}\n")
+                
