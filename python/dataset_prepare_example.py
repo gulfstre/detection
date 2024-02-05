@@ -2,26 +2,26 @@ from detector_dataset_helpers import DetectorDatasetHelper as helper
 
 
 
-path = '.'
+PATH = '.'
 
-helper.create_folder(os.path.join(path, 'coco'))
+helper.create_folder(os.path.join(PATH, 'coco'))
 
-helper.download_file_with_resume('http://images.cocodataset.org/zips/train2017.zip', path)
+helper.download_file_with_resume('http://images.cocodataset.org/zips/train2017.zip', PATH)
 helper.unzip_file_nopaths(
-    os.path.join(path, 'train2017.zip'), 
-    os.path.join(path, 'coco', 'images', 'train2017')
+    os.path.join(PATH, 'train2017.zip'), 
+    os.path.join(PATH, 'coco', 'images', 'train2017')
 )
 
-helper.download_file_with_resume('http://images.cocodataset.org/zips/val2017.zip', path)
+helper.download_file_with_resume('http://images.cocodataset.org/zips/val2017.zip', PATH)
 helper.unzip_file_nopaths(
-    os.path.join(path, 'val2017.zip'), 
-    os.path.join(path, 'coco', 'images', 'val2017')
+    os.path.join(PATH, 'val2017.zip'), 
+    os.path.join(PATH, 'coco', 'images', 'val2017')
 )
 
-helper.download_file_with_resume('https://github.com/ultralytics/yolov5/releases/download/v1.0/coco2017labels.zip', path)
+helper.download_file_with_resume('https://github.com/ultralytics/yolov5/releases/download/v1.0/coco2017labels.zip', PATH)
 helper.unzip_file(
-    os.path.join(path, 'coco2017labels.zip'), 
-    os.path.join(path)
+    os.path.join(PATH, 'coco2017labels.zip'), 
+    os.path.join(PATH)
 )
 
-helper.filter_labels_and_images(os.path.join(path, 'coco'), ['44', '65', '73'])
+helper.filter_labels_and_images(os.path.join(PATH, 'coco'), ['44', '65', '73'])
