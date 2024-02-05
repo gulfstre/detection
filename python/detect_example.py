@@ -5,7 +5,7 @@ from detectors import DetectorYolo8
 
 ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg']
 INPUT_DIR = '/usr/src/exchange/input_images/'
-OUTPUT_DIR = '/usr/src/exchange/input_images/'
+OUTPUT_DIR = '/usr/src/exchange/output_images/'
 
 detector = DetectorYolo8()
 
