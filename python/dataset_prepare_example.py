@@ -2,7 +2,7 @@ from detector_dataset_helpers import DetectorDatasetHelper as helper
 
 
 
-PATH = '.'
+PATH = '/usr/src/'
 
 helper.create_folder(os.path.join(PATH, 'coco'))
 
