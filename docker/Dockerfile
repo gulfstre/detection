@@ -2,6 +2,6 @@ FROM ultralytics/ultralytics:8.1.8
 
 WORKDIR /usr/src/
 
-CMD git clone https://github.com/gulfstre/detection.git ./detection_repo/
+ENTRYPOINT ["sh", "-c", "git clone https://github.com/gulfstre/detection.git ./detection_repo/; exec \"${@}\"", "--"]
 
-CMD bash
+CMD ["tail", "-f", "/dev/null"]
