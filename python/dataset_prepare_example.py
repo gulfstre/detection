@@ -25,7 +25,6 @@ helper.unzip_file(
     os.path.join(PATH)
 )
 
-helper.download_file_with_resume('https://github.com/ultralytics/yolov5/releases/download/v1.0/coco2017labels-segment.zip', PATH)
-
+helper.download_file_with_resume('https://github.com/ultralytics/yolov5/releases/download/v1.0/coco2017labels-segments.zip', PATH)
 
 helper.filter_labels_and_images(os.path.join(PATH, 'coco'), ['44', '65', '73'])
